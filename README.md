@@ -2,7 +2,7 @@
 Write to text source , using **only** keyboard.
 
 # MCOSU full screen example
-[see demo ](virtualchatdemo.webm )
+[see demo ](https://raw.githubusercontent.com/upgradeQ/OBS-VirtualChat/master/virtualchatdemo.webm)
 # Setup
 
 - download ,add it via Tools > Scripts > + button
