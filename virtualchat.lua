@@ -120,7 +120,6 @@ special_keys = {
   {id='htk_identer',des='Send text',callback=enter_callback},
 }
 
-
 function to_buffer(text)
   if text_data.lock and text_data.duration>0 then
     text_data.buffer = text_data.buffer .. text
@@ -128,11 +127,11 @@ function to_buffer(text)
 end
 
 function hotkey_mapping(hotkey)
-	if hotkey == "htk_stop" then
+  if hotkey == "htk_stop" then
     text_data.lock = false
     text_data.show = false
     text_data.duration = 0
-	elseif hotkey == "htk_restart" then
+  elseif hotkey == "htk_restart" then
     text_data.lock = true
     text_data.buffer = ''
     text_data.duration = 86400
@@ -156,7 +155,6 @@ function duration_watcher()
   end
 end
 
-
 function update_text(text)
   local source = obs.obs_get_source_by_name(source_name)
   if source ~= nil then
@@ -167,7 +165,6 @@ function update_text(text)
     obs.obs_source_release(source)
   end
 end
-
 
 function script_load(settings)
   obs.timer_add(duration_watcher,1000) -- on start begin checking duration
@@ -210,18 +207,15 @@ function script_load(settings)
     obs.obs_hotkey_load(hk[k], a)
     obs.obs_data_array_release(a)
   end
-
-
 end
 
 function script_save(settings)
-	for k, v in pairs(hotkeys) do
-		local a = obs.obs_hotkey_save(hk[k])
-		obs.obs_data_set_array(settings, k, a)
-		obs.obs_data_array_release(a)
-	end
+  for k, v in pairs(hotkeys) do
+    local a = obs.obs_hotkey_save(hk[k])
+    obs.obs_data_set_array(settings, k, a)
+    obs.obs_data_array_release(a)
+  end
 end
-
 
 function script_properties()
   local props = obs.obs_properties_create()

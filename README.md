@@ -1,8 +1,9 @@
 # OBS-VirtualChat
 Write to text source , using **only** keyboard.
+- ![Settings](https://i.imgur.com/WT7Z5uU.png)
 
 # MCOSU full screen example
-[see demo ](https://raw.githubusercontent.com/upgradeQ/OBS-VirtualChat/master/virtualchatdemo.webm)
+[see demo ](virtualchatdemo.webm )
 # Setup
 
 - download ,add it via Tools > Scripts > + button
