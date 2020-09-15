@@ -3,7 +3,7 @@ Write to text source , using **only** keyboard.
 - ![Settings](https://i.imgur.com/WT7Z5uU.png)
 
 # MCOSU full screen example
-[see demo ](virtualchatdemo.webm )
+[see demo ](https://raw.githubusercontent.com/upgradeQ/OBS-VirtualChat/master/virtualchatdemo.webm)
 # Setup
 
 - download ,add it via Tools > Scripts > + button
@@ -18,9 +18,10 @@ Write to text source , using **only** keyboard.
 
 # Limitations
 
-only English (ANSI characters) currently supported , but keys can be remapped and added , see
+- only English (ANSI characters) currently supported. However keys can be remapped and added,see
 keyboard_layout table and this file:
-https://github.com/obsproject/obs-studio/blob/master/libobs/obs-hotkeys.h
+https://github.com/obsproject/obs-studio/blob/master/libobs/obs-hotkeys.h  
+- remapping shift , backspace , enter, or any character / character + shift IS NOT persistent 
 
 # How it works 
 First its generates keyboard settings in json , then its creates mapping to callbacks
