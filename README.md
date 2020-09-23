@@ -21,7 +21,7 @@ Write to text source , using **only** keyboard.
 - only English (ANSI characters) currently supported. However keys can be remapped and added,see
 keyboard_layout table and this file:
 https://github.com/obsproject/obs-studio/blob/master/libobs/obs-hotkeys.h  
-- remapping shift , backspace , enter, or any character / character + shift IS NOT persistent 
+- remapping shift , backspace , enter(or backslash on UNIX), or any character / character + shift IS NOT persistent 
 
 # How it works 
 First its generates keyboard settings in json , then its creates mapping to callbacks
