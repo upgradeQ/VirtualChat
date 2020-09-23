@@ -3,6 +3,7 @@
 -- file, You can obtain one at https://mozilla.org/MPL/2.0/.
 -- Author upgradeQ , project homepage github.com/upgradeQ/OBS-VirutalChat
 local obs = obslua
+local ffi = require("ffi")
 
 text_data = {buffer="",duration=0,show=false,lock=false}
 source_name = ''
@@ -84,7 +85,13 @@ end
 
 backspace_key = '"htk_idbackspace": [ { "key": "OBS_KEY_BACKSPACE" } ],'
 json_s = json_s .. backspace_key
-enter_key = '"htk_identer": [ { "key": "OBS_KEY_RETURN" } ],'
+
+if ffi.os == "Windows" then
+  enter_key = '"htk_identer": [ { "key": "OBS_KEY_RETURN" } ],'
+else
+  enter_key = '"htk_identer": [ { "key": "OBS_KEY_BACKSLASH" } ],'
+end
+
 json_s = json_s .. enter_key
 shift_key_last = '"htk_idshift": [ { "key": "OBS_KEY_NONE", "shift": true }]}'
 json_s = json_s .. shift_key_last
@@ -139,16 +146,26 @@ function hotkey_mapping(hotkey)
   end
 end
 
-function clear_text()
+function clear_buffer()
   if text_data.buffer ~= '' then
-    text_data.buffer = ''
+
+    local source = obs.obs_get_source_by_name(source_name)
+    source_id = obs.obs_source_get_unversioned_id(source)
+
+    if source_id == "text_ft2_source" then
+      text_data.buffer = ' ' -- notice space, OBS cant set empty string to ft2
+    else
+      text_data.buffer = ''
+    end
+
     update_text(text_data.buffer)
+    obs.obs_source_release(source)
   end
 end
 
 function duration_watcher()
   if text_data.duration <1 then 
-    clear_text()
+    clear_buffer()
     text_data.lock = true
   else 
     text_data.duration = text_data.duration - 1
