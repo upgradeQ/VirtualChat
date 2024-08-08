@@ -1,4 +1,4 @@
-# OBS-VirtualChat
+# VirtualChat
 Write to text source , using **only** keyboard.
 - ![Settings](https://i.imgur.com/WT7Z5uU.png)
 
